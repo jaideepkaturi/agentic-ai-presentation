@@ -1023,22 +1023,76 @@ body.edit-mode [contenteditable] { outline: 2px dashed var(--accent); border-rad
 [data-theme="got"] .gif-placeholder { border-color: #2a261e; background: #060608; }
 
 /* ===========================================
+   THEME: THE MATRIX
+   =========================================== */
+[data-theme="matrix"] {
+  --bg:           #080c08;
+  --bg-dark:      #030503;
+  --bg-card:      #0e140e;
+  --bg-card2:     #141e14;
+  --text:         #00bb33;
+  --text-on-dark: #00dd44;
+  --muted:        #1a5a1a;
+  --muted-dark:   rgba(0,187,51,0.45);
+  --accent:       #00ff41;
+  --accent-light: rgba(0,255,65,0.08);
+  --rule:         #0a1e0a;
+  --tier-hi:      rgba(0,255,65,0.06);
+  --font-display: 'Courier New', monospace;
+  --font-body:    'Courier New', monospace;
+}
+[data-theme="matrix"] body { background: #080c08; }
+[data-theme="matrix"] .tc-preview { background: #0e140e; }
+[data-theme="matrix"] .check-block { background: #030503; border: 1px solid #0a1e0a; }
+[data-theme="matrix"] .gif-placeholder { border-color: #0a1e0a; background: #030503; }
+
+/* ===========================================
+   THEME: TRON LEGACY
+   =========================================== */
+[data-theme="tron"] {
+  --bg:           #010810;
+  --bg-dark:      #000508;
+  --bg-card:      #061220;
+  --bg-card2:     #0a1c30;
+  --text:         #90c8e8;
+  --text-on-dark: #b0d8f8;
+  --muted:        #2a5878;
+  --muted-dark:   rgba(144,200,232,0.45);
+  --accent:       #00b4e6;
+  --accent-light: rgba(0,180,230,0.12);
+  --rule:         #0a2040;
+  --tier-hi:      rgba(0,180,230,0.08);
+  --font-display: 'Orbitron', sans-serif;
+  --font-body:    'Rajdhani', sans-serif;
+}
+[data-theme="tron"] body { background: #010810; }
+[data-theme="tron"] .tc-preview { background: #061220; }
+[data-theme="tron"] .check-block { background: #000508; border: 1px solid #0a2040; }
+[data-theme="tron"] .gif-placeholder { border-color: #0a2040; background: #000508; }
+
+/* ===========================================
    THEME SWITCHER UI
    =========================================== */
 .theme-switcher {
-  position: fixed; bottom: 1.5rem; left: 1.5rem;
-  z-index: 10000; display: flex; flex-direction: column-reverse;
-  align-items: flex-start; gap: 0.5rem;
+  position: fixed; top: 14px; left: 70px;
+  z-index: 10000; display: flex; flex-direction: column;
+  align-items: flex-start; gap: 0.4rem;
 }
 .ts-trigger {
-  width: 38px; height: 38px; border-radius: 50%;
-  background: var(--accent); border: none; color: #fff;
-  font-size: 1.1rem; cursor: pointer;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.35);
-  transition: transform 0.2s, background 0.3s;
-  display: flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--bg-card); border: 1.5px solid var(--rule);
+  cursor: pointer; position: relative;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  transition: border-color 0.2s, transform 0.2s, opacity 0.2s;
+  opacity: 0.4;
 }
-.ts-trigger:hover { transform: scale(1.12); }
+.ts-trigger::after {
+  content: ''; width: 10px; height: 10px; border-radius: 50%;
+  background: var(--accent);
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  transition: background 0.3s;
+}
+.ts-trigger:hover { opacity: 1; transform: scale(1.1); border-color: var(--accent); }
 .ts-panel {
   background: var(--bg-card); border: 1px solid var(--rule);
   border-radius: 10px; padding: 0.6rem;
@@ -1078,7 +1132,7 @@ body.edit-mode [contenteditable] { outline: 2px dashed var(--accent); border-rad
 
 <!-- THEME SWITCHER -->
 <div class="theme-switcher" id="themeSwitcher">
-  <button class="ts-trigger" id="tsTrigger" title="Switch theme">🎨</button>
+  <button class="ts-trigger" id="tsTrigger" title="Switch theme" aria-label="Switch theme"></button>
   <div class="ts-panel" id="tsPanel">
     <div class="ts-label">Theme</div>
     <button class="ts-opt" data-theme="original">
@@ -1095,6 +1149,12 @@ body.edit-mode [contenteditable] { outline: 2px dashed var(--accent); border-rad
     </button>
     <button class="ts-opt" data-theme="got">
       <span class="ts-swatch" style="background:#b8920c;"></span> Game of Thrones
+    </button>
+    <button class="ts-opt" data-theme="matrix">
+      <span class="ts-swatch" style="background:#00ff41;"></span> The Matrix
+    </button>
+    <button class="ts-opt" data-theme="tron">
+      <span class="ts-swatch" style="background:#00b4e6;"></span> TRON Legacy
     </button>
   </div>
 </div>
