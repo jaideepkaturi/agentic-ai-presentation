@@ -960,8 +960,8 @@ body.edit-mode [contenteditable] { outline: 2px dashed var(--accent); border-rad
   --bg-card2:     #141828;
   --text:         #b0c8e8;
   --text-on-dark: #c8dcf5;
-  --muted:        #4a6280;
-  --muted-dark:   rgba(180,208,240,0.5);
+  --muted:        #6a90b8;
+  --muted-dark:   rgba(180,208,240,0.65);
   --accent:       #00c8e8;
   --accent-light: rgba(0,200,232,0.12);
   --rule:         #1a2238;
@@ -984,7 +984,7 @@ body.edit-mode [contenteditable] { outline: 2px dashed var(--accent); border-rad
   --bg-card2:     #322012;
   --text:         #ecdab0;
   --text-on-dark: #f0e0b8;
-  --muted:        #9a8060;
+  --muted:        #c0a07a;
   --muted-dark:   rgba(236,218,176,0.55);
   --accent:       #c8a020;
   --accent-light: rgba(200,160,32,0.18);
@@ -1008,7 +1008,7 @@ body.edit-mode [contenteditable] { outline: 2px dashed var(--accent); border-rad
   --bg-card2:     #1c1c20;
   --text:         #c8b89a;
   --text-on-dark: #d0c0a0;
-  --muted:        #6a5e4e;
+  --muted:        #9a8a70;
   --muted-dark:   rgba(200,184,154,0.5);
   --accent:       #b8920c;
   --accent-light: rgba(184,146,12,0.15);
@@ -1030,10 +1030,10 @@ body.edit-mode [contenteditable] { outline: 2px dashed var(--accent); border-rad
   --bg-dark:      #030503;
   --bg-card:      #0e140e;
   --bg-card2:     #141e14;
-  --text:         #00bb33;
-  --text-on-dark: #00dd44;
-  --muted:        #1a5a1a;
-  --muted-dark:   rgba(0,187,51,0.45);
+  --text:         #00cc33;
+  --text-on-dark: #00ee44;
+  --muted:        #3aaa3a;
+  --muted-dark:   rgba(0,200,80,0.65);
   --accent:       #00ff41;
   --accent-light: rgba(0,255,65,0.08);
   --rule:         #0a1e0a;
@@ -1047,28 +1047,28 @@ body.edit-mode [contenteditable] { outline: 2px dashed var(--accent); border-rad
 [data-theme="matrix"] .gif-placeholder { border-color: #0a1e0a; background: #030503; }
 
 /* ===========================================
-   THEME: TRON LEGACY
+   THEME: DUNE
+   Sandy desert — warm light palette
    =========================================== */
-[data-theme="tron"] {
-  --bg:           #010810;
-  --bg-dark:      #000508;
-  --bg-card:      #061220;
-  --bg-card2:     #0a1c30;
-  --text:         #90c8e8;
-  --text-on-dark: #b0d8f8;
-  --muted:        #2a5878;
-  --muted-dark:   rgba(144,200,232,0.45);
-  --accent:       #00b4e6;
-  --accent-light: rgba(0,180,230,0.12);
-  --rule:         #0a2040;
-  --tier-hi:      rgba(0,180,230,0.08);
-  --font-display: 'Orbitron', sans-serif;
-  --font-body:    'Rajdhani', sans-serif;
+[data-theme="dune"] {
+  --bg:           #e8d4b0;
+  --bg-dark:      #2a1e0e;
+  --bg-card:      #d8c498;
+  --bg-card2:     #c8b480;
+  --text:         #1e1408;
+  --text-on-dark: #e8d4b0;
+  --muted:        #786040;
+  --muted-dark:   rgba(232,212,176,0.65);
+  --accent:       #c05818;
+  --accent-light: #f0d8b0;
+  --rule:         #b8a070;
+  --tier-hi:      #f5ebd8;
+  --font-display: 'Cinzel', serif;
+  --font-body:    'Crimson Text', serif;
 }
-[data-theme="tron"] body { background: #010810; }
-[data-theme="tron"] .tc-preview { background: #061220; }
-[data-theme="tron"] .check-block { background: #000508; border: 1px solid #0a2040; }
-[data-theme="tron"] .gif-placeholder { border-color: #0a2040; background: #000508; }
+[data-theme="dune"] .tc-preview { background: #c8b480; }
+[data-theme="dune"] .check-block { background: #2a1e0e; color: #e8d4b0; }
+[data-theme="dune"] .gif-placeholder { border-color: #b8a070; background: #c8b480; }
 
 /* ===========================================
    THEME SWITCHER UI
@@ -1153,8 +1153,8 @@ body.edit-mode [contenteditable] { outline: 2px dashed var(--accent); border-rad
     <button class="ts-opt" data-theme="matrix">
       <span class="ts-swatch" style="background:#00ff41;"></span> The Matrix
     </button>
-    <button class="ts-opt" data-theme="tron">
-      <span class="ts-swatch" style="background:#00b4e6;"></span> TRON Legacy
+    <button class="ts-opt" data-theme="dune">
+      <span class="ts-swatch" style="background:#c05818;"></span> Dune
     </button>
   </div>
 </div>
