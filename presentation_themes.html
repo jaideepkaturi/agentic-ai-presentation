@@ -242,6 +242,29 @@ img { max-width: 100%; max-height: min(50vh, 400px); object-fit: contain; }
   color: var(--text); margin-bottom: 0.25em;
 }
 .cap-card .cc-body { font-size: clamp(0.75rem, 1vw, 0.88rem); color: var(--muted); line-height: 1.4; }
+/* Animated chat-vs-agent loop schematic */
+.loop-schematic { width: 100%; height: auto; max-height: 62vh; overflow: visible; }
+.loop-schematic text { font-family: var(--font-body); }
+.loop-schematic .ls-title { font-size: 13px; font-weight: 700; letter-spacing: 0.14em; fill: var(--accent); }
+.loop-schematic .ls-sub { font-weight: 500; letter-spacing: 0.04em; fill: var(--muted); }
+.loop-schematic .ls-panel { fill: var(--bg-card); opacity: 0.55; }
+.loop-schematic .ls-panel-hi { fill: var(--accent-light); opacity: 0.45; }
+.loop-schematic .ls-path { fill: none; stroke: var(--muted); stroke-width: 1.4; }
+.loop-schematic .ls-manual { stroke-dasharray: 4 5; }
+.loop-schematic .ls-loop { stroke: var(--accent); stroke-width: 1.8; }
+.loop-schematic .ls-arrow { fill: var(--muted); }
+.loop-schematic .ls-arrow-acc { fill: var(--accent); }
+.loop-schematic .ls-label { font-size: 11.5px; fill: var(--muted); }
+.loop-schematic .ls-human { font-style: italic; }
+.loop-schematic .ls-act { fill: var(--accent); font-weight: 600; }
+.loop-schematic .ls-dot { fill: var(--accent); }
+.loop-schematic .ls-dot-human { fill: var(--muted); }
+.loop-schematic .ls-you { fill: var(--bg); stroke: var(--text); stroke-width: 1.5; }
+.loop-schematic .ls-box { fill: var(--bg); stroke: var(--text); stroke-width: 1.5; }
+.loop-schematic .ls-node { font-size: 14px; font-weight: 700; fill: var(--text); }
+.loop-schematic .ls-small { font-size: 10.5px; fill: var(--muted); }
+.loop-caption { font-size: var(--small-size); color: var(--muted); line-height: 1.5; }
+.loop-caption strong { color: var(--accent); font-weight: 600; }
 
 .agentic-right {
   display: flex; flex-direction: column; justify-content: center;
@@ -355,6 +378,14 @@ img { max-width: 100%; max-height: min(50vh, 400px); object-fit: contain; }
 .anatomy-tree .t-file   { color: var(--muted); }
 .anatomy-tree .t-tag    { color: var(--accent); font-weight: 600; }
 .anatomy-tree .t-comment{ color: #888; font-style: italic; }
+.anatomy-left h2 em { font-style: normal; color: var(--accent); }
+.anatomy-tree .t-comp {
+  display: inline-block; font-family: var(--font-body);
+  font-size: 0.72em; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent); border: 1px solid var(--accent); border-radius: 99px;
+  padding: 0 0.6em; line-height: 1.6; vertical-align: middle;
+}
+.fix-table td { background: transparent; }
 .anatomy-desc {
   font-size: var(--small-size); color: var(--muted);
   line-height: 1.5; max-width: 380px;
@@ -384,6 +415,132 @@ img { max-width: 100%; max-height: min(50vh, 400px); object-fit: contain; }
   font-size: var(--small-size); color: var(--muted); line-height: 1.5;
 }
 .key-idea strong { display: block; color: var(--text); margin-bottom: 0.2em; font-size: var(--small-size); }
+
+/* ===========================================
+   WHAT MAKES AN AGENT (ingredients + extensions)
+   =========================================== */
+.ingredients-slide {
+  background: var(--bg);
+  display: grid !important;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+.ing-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: var(--slide-padding); gap: clamp(0.7rem, 1.2vw, 1.2rem);
+  border-right: 1px solid var(--rule);
+}
+.ing-left h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.5vw, 3rem);
+  color: var(--text); line-height: 1.05;
+}
+.ing-left h2 em { font-style: normal; color: var(--accent); }
+.ing-list { display: flex; flex-direction: column; }
+.ing {
+  display: grid; grid-template-columns: 1.6em 1fr; column-gap: 0.6em;
+  padding: clamp(0.45rem, 0.8vw, 0.75rem) 0;
+  border-top: 1px solid var(--rule);
+}
+.ing-op {
+  font-family: var(--font-display); color: var(--accent);
+  font-size: clamp(1rem, 1.5vw, 1.3rem); line-height: 1.1; text-align: center;
+}
+.ing-name {
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 1.45vw, 1.25rem); color: var(--text); line-height: 1.15;
+}
+.ing-body { font-size: var(--small-size); color: var(--muted); line-height: 1.45; margin-top: 0.15em; }
+.ing-eg { font-size: var(--label-size); color: var(--muted); margin-top: 0.3em; }
+.ing-eg b { font-weight: 600; color: var(--text); letter-spacing: 0.04em; }
+.ing-total { border-top: 2px solid var(--text); }
+.ing-total .ing-name { color: var(--accent); }
+
+.ing-schematic { max-height: 60vh; margin-bottom: 0.6rem; }
+.ing-schematic .ls-node { font-size: 15px; }
+.ing-schematic .ls-small { font-size: 11.5px; }
+.ing-schematic .ls-title { font-size: 14px; }
+.loop-schematic .ls-box-out { stroke-dasharray: 4 4; }
+.loop-schematic .ls-harness { fill: none; stroke: var(--muted); stroke-width: 1.2; stroke-dasharray: 5 5; }
+.loop-schematic .ls-box-model { fill: var(--accent-light); stroke: var(--accent); stroke-width: 2; }
+.loop-schematic .ls-box-eval { stroke: var(--muted); }
+.loop-schematic .ls-chip { fill: var(--bg-card); stroke: var(--rule); stroke-width: 1; }
+.loop-schematic .ls-chip-text { fill: var(--text); font-weight: 500; }
+.ing-right {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: var(--slide-padding); gap: clamp(0.8rem, 1.3vw, 1.3rem);
+}
+.ing-right .col-head {
+  font-family: var(--font-display);
+  font-size: clamp(0.8rem, 1.1vw, 1rem); color: var(--text);
+}
+.ing-right .ext-intro { font-size: var(--small-size); color: var(--muted); line-height: 1.5; }
+.ext-table td { font-size: clamp(0.8rem, 1.05vw, 0.95rem); padding: 0.6em 0.5em; }
+.ext-table .ext-name { font-weight: 600; white-space: nowrap; }
+.ext-tag {
+  display: inline-block; font-size: 0.72em; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent); border: 1px solid var(--accent);
+  border-radius: 99px; padding: 0.1em 0.6em; white-space: nowrap;
+}
+.ext-note { font-size: var(--label-size); color: var(--muted); font-style: italic; }
+
+/* ===========================================
+   ROADMAP — four workflows across a project
+   =========================================== */
+.roadmap-slide {
+  background: var(--bg);
+  display: flex !important; flex-direction: column; justify-content: center;
+  padding: var(--slide-padding); gap: clamp(1.2rem, 2.5vw, 2.4rem);
+  overflow: hidden;
+}
+.rm-head { display: flex; flex-direction: column; gap: clamp(0.5rem, 0.9vw, 0.9rem); }
+.rm-head h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.5vw, 3rem);
+  color: var(--text); line-height: 1.05;
+}
+.rm-head h2 em { font-style: normal; color: var(--accent); }
+.rm-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1.4rem, 2.6vw, 2.6rem);
+}
+.rm-card { position: relative; display: flex; flex-direction: column; gap: 0.55em; min-width: 0; }
+.rm-card:not(:last-child)::after {
+  content: '→'; position: absolute;
+  right: calc(-1 * clamp(1.4rem, 2.6vw, 2.6rem) / 2); top: 38%;
+  transform: translate(50%, -50%);
+  color: var(--accent); font-size: clamp(1rem, 1.4vw, 1.3rem);
+}
+.rm-num {
+  font-size: var(--label-size); font-weight: 600;
+  letter-spacing: 0.2em; color: var(--accent);
+}
+.rm-media {
+  aspect-ratio: 4 / 3; width: 100%;
+  background: var(--bg-dark); border-radius: 8px;
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.rm-media img, .rm-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.rm-media.rm-placeholder {
+  flex-direction: column; gap: 0.4em;
+  border: 1.5px dashed #444;
+}
+.rm-media .ph-label {
+  font-size: var(--label-size); color: #888; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+.rm-media .ph-hint { font-size: clamp(0.6rem, 0.8vw, 0.7rem); color: #555; }
+.rm-media .tc3d-loading {
+  color: rgba(255,255,255,0.4); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+}
+.rm-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 1.8vw, 1.6rem); color: var(--text); line-height: 1.1;
+  margin-top: 0.2em;
+}
+.rm-desc { font-size: var(--small-size); color: var(--muted); line-height: 1.45; }
 
 /* ===========================================
    SECTION CARDS — Slides 4 & 6 (dark)
@@ -1189,6 +1346,43 @@ body.edit-mode [contenteditable] { outline: 2px dashed var(--accent); border-rad
 </section>
 
 <!-- ============================================================
+     SLIDE 1b — SETUP (PLACEHOLDER)
+     Practical setup first, so the audience can focus on content.
+     Fill in links/steps on the corporate machine.
+     ============================================================ -->
+<section class="slide closing-slide setup-slide" aria-label="Getting set up">
+  <div class="closing-left">
+    <div class="cl-tag reveal">Before we start</div>
+    <h2 class="reveal">Getting<br>set up</h2>
+    <div class="principle reveal">
+      <div class="p-text">Everything you need to follow along afterwards. These slides will be shared, so there is no need to copy links now.</div>
+    </div>
+    <div class="copilot-cue reveal">[ Setup guide link / QR code ]</div>
+  </div>
+  <div class="closing-right">
+    <div class="cr-head reveal">Four steps</div>
+    <div class="principle-list stagger">
+      <div class="start-step reveal">
+        <div class="ss-num">01</div>
+        <div class="ss-body"><strong>Python</strong> — [ install source / version / environment manager, link ]</div>
+      </div>
+      <div class="start-step reveal">
+        <div class="ss-num">02</div>
+        <div class="ss-body"><strong>VS Code</strong> — [ install source, link ]</div>
+      </div>
+      <div class="start-step reveal">
+        <div class="ss-num">03</div>
+        <div class="ss-body"><strong>GitHub Copilot access</strong> — [ enrollment form, approvals, account, link ]</div>
+      </div>
+      <div class="start-step reveal">
+        <div class="ss-num">04</div>
+        <div class="ss-body"><strong>Copilot in VS Code</strong> — [ install extensions, sign in, switch chat to Agent mode, open a project folder ]</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
      SLIDE 2 — AGENTIC AI
      Left: what/why | Right: tier table + abstraction
      ============================================================ -->
@@ -1196,27 +1390,82 @@ body.edit-mode [contenteditable] { outline: 2px dashed var(--accent); border-rad
   <div class="agentic-left">
     <div class="eyebrow reveal">The key shift</div>
     <h2 class="reveal">Chat <em>answers.</em><br>Agents <em>act.</em></h2>
-    <div class="cap-grid stagger">
-      <div class="cap-card reveal">
-        <div class="cc-head">Tool Use</div>
-        <div class="cc-body">Reads your files, runs code, writes output. Operates on real artifacts.</div>
-      </div>
-      <div class="cap-card reveal">
-        <div class="cc-head">Planning</div>
-        <div class="cc-body">Breaks a goal into steps, adapts when something fails</div>
-      </div>
-      <div class="cap-card reveal">
-        <div class="cc-head">Memory</div>
-        <div class="cc-body">Holds your full project in context: specs, code, prior decisions.</div>
-      </div>
-      <div class="cap-card reveal">
-        <div class="cc-head">Self-Correction</div>
-        <div class="cc-body">Runs the script, reads the error, rewrites. Iterates without you.</div>
-      </div>
-    </div>
+    <!-- Animated loop schematic. Both panels share one 16s cycle and one node grid.
+         Chat: one round trip, closed manually by the user.
+         Agent: three act/observe iterations, closed by the system.
+         Regenerate with care: dot timings are fractions of the cycle. -->
+    <svg class="loop-schematic reveal" viewBox="0 0 520 470" role="img"
+         aria-label="Schematic. Chat: the user asks, the model replies with text, and the user carries it to their workspace, runs it and pastes results back. Agent: the user gives a goal, the model acts on the workspace through tools and observes the results in a loop, then returns a result for review.">
+      <defs>
+        <marker id="lsArrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse" orient="auto"><path class="ls-arrow" d="M 0 0.5 L 7 4 L 0 7.5 Z"/></marker>
+        <marker id="lsArrowAcc" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="ls-arrow-acc" d="M 0 0.5 L 7 4 L 0 7.5 Z"/></marker>
+      </defs>
+
+      <!-- ================= CHAT: OPEN LOOP ================= -->
+      <g>
+        <text class="ls-title" x="0" y="16">CHAT <tspan class="ls-sub">· open loop · you close it</tspan></text>
+        <rect class="ls-panel" x="0" y="28" width="520" height="190" rx="10"/>
+
+        <path id="lsChatQ"    class="ls-path" marker-end="url(#lsArrow)" d="M 90 115 L 183 115"/>
+        <path id="lsChatA"    class="ls-path" marker-end="url(#lsArrow)" d="M 183 131 L 90 131"/>
+        <path id="lsChatRun"  class="ls-path ls-manual" marker-end="url(#lsArrow)" d="M 64 149 C 64 200, 422 200, 422 148"/>
+        <path id="lsChatBack" class="ls-path ls-manual" marker-end="url(#lsArrow)" d="M 422 98 C 422 46, 64 46, 64 97"/>
+
+        <text class="ls-label" x="136.5" y="107" text-anchor="middle">question</text>
+        <text class="ls-label" x="136.5" y="147" text-anchor="middle">reply</text>
+        <text class="ls-label ls-human" x="243" y="207" text-anchor="middle">you copy, run, debug</text>
+        <text class="ls-label ls-human" x="243" y="48" text-anchor="middle">you paste results back</text>
+
+        <circle class="ls-dot" r="4" opacity="0"><animateMotion dur="16s" repeatCount="indefinite" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.03;0.11;1" keySplines="0 0 1 1;0.45 0 0.55 1;0 0 1 1"><mpath href="#lsChatQ"/></animateMotion><animate attributeName="opacity" dur="16s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.03;0.045;0.095;0.11;1"/></circle>
+        <circle class="ls-dot" r="4" opacity="0"><animateMotion dur="16s" repeatCount="indefinite" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.14;0.22;1" keySplines="0 0 1 1;0.45 0 0.55 1;0 0 1 1"><mpath href="#lsChatA"/></animateMotion><animate attributeName="opacity" dur="16s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.14;0.155;0.205;0.22;1"/></circle>
+        <circle class="ls-dot ls-dot-human" r="4" opacity="0"><animateMotion dur="16s" repeatCount="indefinite" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.28;0.56;1" keySplines="0 0 1 1;0.45 0 0.55 1;0 0 1 1"><mpath href="#lsChatRun"/></animateMotion><animate attributeName="opacity" dur="16s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.28;0.295;0.545;0.56;1"/></circle>
+        <circle class="ls-dot ls-dot-human" r="4" opacity="0"><animateMotion dur="16s" repeatCount="indefinite" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.62;0.9;1" keySplines="0 0 1 1;0.45 0 0.55 1;0 0 1 1"><mpath href="#lsChatBack"/></animateMotion><animate attributeName="opacity" dur="16s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.62;0.635;0.885;0.9;1"/></circle>
+
+        <circle class="ls-you" cx="64" cy="123" r="26"/>
+        <text class="ls-node" x="64" y="128" text-anchor="middle">You</text>
+        <rect class="ls-box" x="183" y="98" width="120" height="50" rx="8"/>
+        <text class="ls-node" x="243" y="121" text-anchor="middle">LLM</text>
+        <text class="ls-small" x="243" y="137" text-anchor="middle">Copilot Chat</text>
+        <rect class="ls-box" x="362" y="98" width="120" height="50" rx="8"/>
+        <text class="ls-node" x="422" y="121" text-anchor="middle">Workspace</text>
+        <text class="ls-small" x="422" y="137" text-anchor="middle">files · code · rig</text>
+      </g>
+
+      <!-- ================= AGENT: CLOSED LOOP ================= -->
+      <g transform="translate(0,252)">
+        <text class="ls-title" x="0" y="16">AGENT <tspan class="ls-sub">· closed loop · the system closes it</tspan></text>
+        <rect class="ls-panel ls-panel-hi" x="0" y="28" width="520" height="190" rx="10"/>
+
+        <path id="lsAgGoal"   class="ls-path" marker-end="url(#lsArrow)" d="M 90 115 L 183 115"/>
+        <path id="lsAgReview" class="ls-path ls-manual" marker-end="url(#lsArrow)" d="M 183 131 L 90 131"/>
+        <path class="ls-path ls-loop" marker-end="url(#lsArrowAcc)" d="M 243 98 C 243 46, 422 46, 422 98"/>
+        <path class="ls-path ls-loop" marker-end="url(#lsArrowAcc)" d="M 422 148 C 422 200, 243 200, 243 148"/>
+        <!-- act/observe loop traced three times, for the moving dot -->
+        <path id="lsAgLoop" fill="none" stroke="none" d="M 243 98 C 243 46, 422 46, 422 98 L 422 148 C 422 200, 243 200, 243 148 L 243 98 C 243 46, 422 46, 422 98 L 422 148 C 422 200, 243 200, 243 148 L 243 98 C 243 46, 422 46, 422 98 L 422 148 C 422 200, 243 200, 243 148 L 243 98"/>
+
+        <text class="ls-label" x="136.5" y="107" text-anchor="middle">goal</text>
+        <text class="ls-label ls-human" x="136.5" y="147" text-anchor="middle">review</text>
+        <text class="ls-label ls-act" x="332.5" y="48" text-anchor="middle">act · read, edit, run</text>
+        <text class="ls-label ls-act" x="332.5" y="207" text-anchor="middle">observe · output, errors, tests</text>
+
+        <circle class="ls-dot" r="4" opacity="0"><animateMotion dur="16s" repeatCount="indefinite" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.03;0.11;1" keySplines="0 0 1 1;0.45 0 0.55 1;0 0 1 1"><mpath href="#lsAgGoal"/></animateMotion><animate attributeName="opacity" dur="16s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.03;0.045;0.095;0.11;1"/></circle>
+        <circle class="ls-dot" r="4" opacity="0"><animateMotion dur="16s" repeatCount="indefinite" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.14;0.84;1" keySplines="0 0 1 1;0.45 0 0.55 1;0 0 1 1"><mpath href="#lsAgLoop"/></animateMotion><animate attributeName="opacity" dur="16s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.14;0.155;0.825;0.84;1"/></circle>
+        <circle class="ls-dot ls-dot-human" r="4" opacity="0"><animateMotion dur="16s" repeatCount="indefinite" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.87;0.95;1" keySplines="0 0 1 1;0.45 0 0.55 1;0 0 1 1"><mpath href="#lsAgReview"/></animateMotion><animate attributeName="opacity" dur="16s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.87;0.885;0.935;0.95;1"/></circle>
+
+        <circle class="ls-you" cx="64" cy="123" r="26"/>
+        <text class="ls-node" x="64" y="128" text-anchor="middle">You</text>
+        <rect class="ls-box" x="183" y="98" width="120" height="50" rx="8"/>
+        <text class="ls-node" x="243" y="121" text-anchor="middle">LLM</text>
+        <text class="ls-small" x="243" y="137" text-anchor="middle">same model</text>
+        <rect class="ls-box" x="362" y="98" width="120" height="50" rx="8"/>
+        <text class="ls-node" x="422" y="121" text-anchor="middle">Workspace</text>
+        <text class="ls-small" x="422" y="137" text-anchor="middle">files · code · rig</text>
+      </g>
+    </svg>
+    <p class="loop-caption reveal">The model is the same in both. The difference is <strong>who closes the loop.</strong></p>
   </div>
   <div class="agentic-right">
-    <div class="col-head reveal">The tool landscape: where things sit</div>
+    <div class="col-head reveal">The landscape of AI tools</div>
     <table class="tier-table reveal">
       <thead>
         <tr>
@@ -1228,27 +1477,27 @@ body.edit-mode [contenteditable] { outline: 2px dashed var(--accent); border-rad
       <tbody>
         <tr>
           <td class="tier-name">Chat</td>
-          <td class="tier-tools">Ask a question, get an answer. No memory, no files.</td>
+          <td class="tier-tools">Single question and response. No access to files or prior sessions.</td>
           <td>ChatGPT, Copilot Chat</td>
         </tr>
         <tr class="tier-you">
           <td class="tier-name">Chat + images</td>
-          <td class="tier-tools">Paste a screenshot, describe a plot. Still you driving.</td>
-          <td><span class="work-tag">← we are here</span> Copilot Chat in browser</td>
+          <td class="tier-tools">Accepts images and documents as input. The user directs every step.</td>
+          <td><span class="work-tag">Current use</span> Copilot Chat in browser</td>
         </tr>
         <tr>
           <td class="tier-name">Chat + tools</td>
-          <td class="tier-tools">Runs code, reads uploaded files. One task at a time.</td>
+          <td class="tier-tools">Executes code on uploaded files within a single exchange.</td>
           <td>ChatGPT Advanced Data Analysis</td>
         </tr>
         <tr class="highlight-row">
           <td class="tier-name">Agent</td>
-          <td class="tier-tools">Give it a goal. It plans, acts, checks, iterates.</td>
-          <td><span class="work-tag">← the shift</span> Copilot in VS Code</td>
+          <td class="tier-tools">Given a goal, plans, executes, verifies and iterates.</td>
+          <td><span class="work-tag">Focus of this talk</span> GitHub Copilot (Agent mode) in VS Code</td>
         </tr>
       </tbody>
     </table>
-    <div class="abstr-task reveal">Task: "find the mean of my 10 pressure readings"</div>
+    <div class="abstr-task reveal">Example task: compute the mean of 10 pressure readings</div>
     <div class="abstr-strip reveal">
       <div class="abstr-col">
         <div class="abstr-name">Machine code</div>
@@ -1258,7 +1507,7 @@ ADD AX,[SI]
 ADD SI, 2
 LOOP ...
 DIV CX</div>
-        <div class="abstr-tag">write every bit</div>
+        <div class="abstr-tag">explicit instructions</div>
       </div>
       <div class="abstr-arrow">→</div>
       <div class="abstr-col">
@@ -1269,7 +1518,7 @@ for(i=0;
  i&lt;N; i++)
  m+=p[i];
 m/=N;</div>
-        <div class="abstr-tag">manage memory</div>
+        <div class="abstr-tag">manual memory</div>
       </div>
       <div class="abstr-arrow">→</div>
       <div class="abstr-col">
@@ -1281,56 +1530,242 @@ m/=N;</div>
 
 
 </div>
-        <div class="abstr-tag">say what</div>
+        <div class="abstr-tag">specify the operation</div>
       </div>
       <div class="abstr-arrow">→</div>
       <div class="abstr-col abstr-hi">
         <div class="abstr-name">Agentic AI</div>
-        <div class="abstr-code">"Find the mean pressure and flag any readings outside two standard deviations"</div>
-        <div class="abstr-tag">say the outcome</div>
+        <div class="abstr-code">"Compute the mean pressure and flag readings beyond two standard deviations"</div>
+        <div class="abstr-tag">specify the outcome</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     SLIDE 3 — ANATOMY OF AN AGENTIC PROJECT
-     Left: file/folder scaffolding | Right: skills + key idea
+     SLIDE 3b — WHAT MAKES AN AGENT
+     Left: the four ingredients as an equation | Right: extensions,
+     each mapped to the ingredient it extends
+     ============================================================ -->
+<section class="slide ingredients-slide" aria-label="What makes an agent">
+  <div class="ing-left">
+    <div class="eyebrow reveal">The ingredients</div>
+    <h2 class="reveal">What makes<br>an <em>agent</em></h2>
+    <!-- Agent anatomy schematic: Context feeds the Model; the Loop cycles
+         Model -> Tools -> back; Tools reach the Workspace outside the agent. -->
+    <svg class="loop-schematic ing-schematic reveal" viewBox="0 10 610 375" role="img"
+         aria-label="Agent map. You give a task to the loop control. The loop passes the history to the context builder, which gives context to the model. The model proposes an action, which the gate checks against permissions; if allowed, it runs in the environment through tools, and the observation returns to the loop. The store keeps memory and logs. An evaluator judges the final state. Everything except the model and the environment is the harness.">
+      <defs>
+        <marker id="ingArrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path class="ls-arrow" d="M 0 0.5 L 7 4 L 0 7.5 Z"/></marker>
+        <marker id="ingArrowAcc" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path class="ls-arrow-acc" d="M 0 0.5 L 7 4 L 0 7.5 Z"/></marker>
+      </defs>
+
+      <!-- harness boundary -->
+      <rect class="ls-panel ls-panel-hi" x="6" y="114" width="588" height="88" rx="12"/>
+      <rect class="ls-harness" x="6" y="114" width="588" height="88" rx="12"/>
+      <text class="ls-title" x="12" y="104">HARNESS</text>
+
+      <!-- edges: the agent cycle (accent) -->
+      <path class="ls-path ls-loop" marker-end="url(#ingArrowAcc)" d="M 270 158 L 310 158"/>
+      <path class="ls-path ls-loop" marker-end="url(#ingArrowAcc)" d="M 381 135 L 429 66"/>
+      <path class="ls-path ls-loop" marker-end="url(#ingArrowAcc)" d="M 461 66 L 511 135"/>
+      <path class="ls-path ls-loop" marker-end="url(#ingArrowAcc)" d="M 527 181 L 527 226"/>
+      <path class="ls-path ls-loop" marker-end="url(#ingArrowAcc)" d="M 449 263 L 215 263 L 215 181"/>
+      <!-- edges: supporting (muted) -->
+      <path class="ls-path" marker-end="url(#ingArrow)" d="M 215 66 L 215 135"/>
+      <path class="ls-path" marker-start="url(#ingArrow)" marker-end="url(#ingArrow)" d="M 128 158 L 160 158"/>
+      <path class="ls-path ls-manual" marker-end="url(#ingArrow)" d="M 73 181 L 73 341 L 200 341"/>
+      <path class="ls-path ls-manual" marker-end="url(#ingArrow)" d="M 527 312 L 527 341 L 420 341"/>
+
+      <!-- edge labels -->
+      <text class="ls-label" x="223" y="94">task</text>
+      <text class="ls-label ls-act" x="290" y="130" text-anchor="middle">history</text>
+      <text class="ls-label ls-act" x="398" y="96" text-anchor="end">context</text>
+      <text class="ls-label ls-act" x="493" y="96">action</text>
+      <text class="ls-label ls-act" x="535" y="222">if allowed</text>
+      <text class="ls-label ls-act" x="343" y="256" text-anchor="middle">observation</text>
+      <text class="ls-label" x="473" y="334" text-anchor="middle">final state</text>
+      <text class="ls-label" x="136" y="334" text-anchor="middle">run log</text>
+
+      <!-- motion paths (through box centres, so dots pass behind boxes) -->
+      <path id="amTask"  fill="none" stroke="none" d="M 215 43 L 215 158"/>
+      <path id="amCycle" fill="none" stroke="none" d="M 215 158 L 365 158 L 445 43 L 527 158 L 527 263 L 215 263 L 215 158 L 365 158 L 445 43 L 527 158 L 527 263 L 215 263 L 215 158 L 365 158 L 445 43 L 527 158 L 527 263 L 215 263 L 215 158"/>
+      <path id="amFinalE" fill="none" stroke="none" d="M 527 263 L 527 341 L 310 341"/>
+      <path id="amFinalS" fill="none" stroke="none" d="M 73 158 L 73 341 L 310 341"/>
+      <circle class="ls-dot" r="4" opacity="0"><animateMotion dur="18s" repeatCount="indefinite" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.02;0.08;1" keySplines="0 0 1 1;0.45 0 0.55 1;0 0 1 1"><mpath href="#amTask"/></animateMotion><animate attributeName="opacity" dur="18s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.02;0.032;0.068;0.08;1"/></circle>
+      <circle class="ls-dot" r="4" opacity="0"><animateMotion dur="18s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0;1;1" keyTimes="0;0.1;0.82;1"><mpath href="#amCycle"/></animateMotion><animate attributeName="opacity" dur="18s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.1;0.112;0.808;0.82;1"/></circle>
+      <circle class="ls-dot ls-dot-human" r="4" opacity="0"><animateMotion dur="18s" repeatCount="indefinite" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.85;0.95;1" keySplines="0 0 1 1;0.45 0 0.55 1;0 0 1 1"><mpath href="#amFinalE"/></animateMotion><animate attributeName="opacity" dur="18s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.85;0.862;0.938;0.95;1"/></circle>
+      <circle class="ls-dot ls-dot-human" r="4" opacity="0"><animateMotion dur="18s" repeatCount="indefinite" calcMode="spline" keyPoints="0;0;1;1" keyTimes="0;0.85;0.95;1" keySplines="0 0 1 1;0.45 0 0.55 1;0 0 1 1"><mpath href="#amFinalS"/></animateMotion><animate attributeName="opacity" dur="18s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;0.85;0.862;0.938;0.95;1"/></circle>
+
+      <!-- nodes -->
+      <rect class="ls-box" x="160" y="20" width="110" height="46" rx="8"/><text class="ls-node" x="215.0" y="41.0" text-anchor="middle">You</text><text class="ls-small" x="215.0" y="57.0" text-anchor="middle">user</text>
+      <rect class="ls-box ls-box-model" x="390" y="20" width="110" height="46" rx="8"/><text class="ls-node" x="445.0" y="41.0" text-anchor="middle">Model</text><text class="ls-small" x="445.0" y="57.0" text-anchor="middle">the LLM</text>
+      <rect class="ls-box" x="18" y="135" width="110" height="46" rx="8"/><text class="ls-node" x="73.0" y="156.0" text-anchor="middle">Store</text><text class="ls-small" x="73.0" y="172.0" text-anchor="middle">memory, logs</text>
+      <rect class="ls-box" x="160" y="135" width="110" height="46" rx="8"/><text class="ls-node" x="215.0" y="156.0" text-anchor="middle">Loop</text><text class="ls-small" x="215.0" y="172.0" text-anchor="middle">control</text>
+      <rect class="ls-box" x="310" y="135" width="110" height="46" rx="8"/><text class="ls-node" x="365.0" y="156.0" text-anchor="middle">Context</text><text class="ls-small" x="365.0" y="172.0" text-anchor="middle">builder</text>
+      <rect class="ls-box" x="472" y="135" width="110" height="46" rx="8"/><text class="ls-node" x="527.0" y="156.0" text-anchor="middle">Gate</text><text class="ls-small" x="527.0" y="172.0" text-anchor="middle">permissions</text>
+      <rect class="ls-box ls-box-out" x="449" y="226" width="156" height="86" rx="8"/><text class="ls-node" x="527" y="246" text-anchor="middle">Environment <tspan class="ls-small">· tools</tspan></text><rect class="ls-chip" x="462" y="258" width="62" height="19" rx="9.5"/><text class="ls-small ls-chip-text" x="493" y="271.5" text-anchor="middle">read files</text><rect class="ls-chip" x="530" y="258" width="62" height="19" rx="9.5"/><text class="ls-small ls-chip-text" x="561" y="271.5" text-anchor="middle">edit files</text><rect class="ls-chip" x="462" y="282" width="62" height="19" rx="9.5"/><text class="ls-small ls-chip-text" x="493" y="295.5" text-anchor="middle">terminal</text><rect class="ls-chip" x="530" y="282" width="62" height="19" rx="9.5"/><text class="ls-small ls-chip-text" x="561" y="295.5" text-anchor="middle">search</text>
+      <rect class="ls-box ls-box-eval" x="200" y="306" width="220" height="70" rx="8"/><text class="ls-node" x="310" y="327" text-anchor="middle">Evaluator <tspan class="ls-small">· after the run</tspan></text><rect class="ls-chip" x="208" y="337" width="64" height="24" rx="12"/><text class="ls-small ls-chip-text" x="240" y="353" text-anchor="middle">test code</text><rect class="ls-chip" x="278" y="337" width="64" height="24" rx="12"/><text class="ls-small ls-chip-text" x="310" y="353" text-anchor="middle">LLM judge</text><rect class="ls-chip" x="348" y="337" width="64" height="24" rx="12"/><text class="ls-small ls-chip-text" x="380" y="353" text-anchor="middle">human</text>
+    </svg>
+    <p class="loop-caption reveal">The model is the only part you do not build. <strong>Everything in the harness is design,</strong> and Copilot supplies a default one.</p>
+  </div>
+  <div class="ing-right">
+    <div class="col-head reveal">Extensions in the projects</div>
+    <p class="ext-intro reveal">Each one shapes a box on the map.</p>
+    <table class="tier-table ext-table reveal">
+      <thead>
+        <tr><th>Extension</th><th>What it adds</th><th>Box</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="ext-name">Instruction files</td>
+          <td class="tier-tools">Project rules, every session</td>
+          <td><span class="ext-tag">Context</span></td>
+        </tr>
+        <tr>
+          <td class="ext-name">Skills</td>
+          <td class="tier-tools">Task know-how, loaded on demand</td>
+          <td><span class="ext-tag">Store</span></td>
+        </tr>
+        <tr>
+          <td class="ext-name">MCP servers</td>
+          <td class="tier-tools">Links to databases and instruments</td>
+          <td><span class="ext-tag">Tools</span></td>
+        </tr>
+        <tr>
+          <td class="ext-name">Subagents</td>
+          <td class="tier-tools">A fresh agent for a sub-task</td>
+          <td><span class="ext-tag">Loop</span></td>
+        </tr>
+        <tr>
+          <td class="ext-name">Hooks</td>
+          <td class="tier-tools">Scripts that run at fixed points</td>
+          <td><span class="ext-tag">Gate</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="ext-note reveal">Availability depends on organisational Copilot settings.</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 3 — ANATOMY OF AN AGENTIC PROJECT (practical)
+     Left: project files, each tagged with the agent-map box it shapes
+     Right: symptom -> box -> fix
      ============================================================ -->
 <section class="slide anatomy-slide" aria-label="Anatomy of an agentic project">
   <div class="anatomy-left">
-    <div class="eyebrow reveal">How a project is set up</div>
-    <h2 class="reveal">Anatomy of an<br>Agentic Project</h2>
-    <div class="anatomy-tree reveal">
-<span class="t-folder">your-project/</span>
-├── <span class="t-folder">.github/</span>
-│   ├── <span class="t-tag">copilot-instructions.md</span>  <span class="t-comment">← agent reads this first</span>
-│   └── <span class="t-folder">prompts/</span>              <span class="t-comment">← reusable prompt files</span>
-├── <span class="t-tag">setup_spec.md</span>                <span class="t-comment">← machine-readable context</span>
-└── <span class="t-folder">src/</span>                       <span class="t-comment">← your actual code</span>
-    </div>
-    <p class="anatomy-desc reveal">The instruction file is the key. It gives the agent persistent memory across sessions. No re-explaining your setup every time.</p>
+    <div class="eyebrow reveal">From the map to your folder</div>
+    <h2 class="reveal">Your files<br>configure the <em>harness</em></h2>
+    <div class="anatomy-tree reveal"><span class="t-folder">your-project/</span>
+├── <span class="t-tag">.github/copilot-instructions.md</span>   <span class="t-comp">Context</span>
+├── <span class="t-folder">.github/prompts/</span>                  <span class="t-comp">Task</span>
+├── <span class="t-folder">.github/skills/</span>                   <span class="t-comp">Store</span>
+├── <span class="t-tag">.vscode/mcp.json</span>                  <span class="t-comp">Tools</span>
+├── <span class="t-tag">docs/setup_spec.md</span>                <span class="t-comp">Store</span>
+├── <span class="t-tag">PLAN.md</span>                           <span class="t-comp">Store</span>
+├── <span class="t-folder">scripts/</span>                          <span class="t-comp">Tools</span>
+├── <span class="t-folder">tests/</span>                            <span class="t-comp">Evaluator</span>
+└── <span class="t-folder">src/</span>                              <span class="t-comp">Environment</span></div>
+    <p class="anatomy-desc reveal">Copilot provides the harness. Each file in your project configures one box on the agent map.</p>
   </div>
   <div class="anatomy-right">
-    <div class="col-head reveal">Markdown is the new code</div>
-    <p class="anatomy-desc reveal" style="color:var(--muted);font-size:var(--small-size);line-height:1.55;max-width:100%;">Previously, getting a computer to do something required writing code. Now it requires writing <em>clear context</em>. The agent writes the code. You write the brief.</p>
-    <div class="skill-cards stagger">
-      <div class="skill-card reveal">
-        <div class="sk-name">copilot-instructions.md</div>
-        <div class="sk-desc">Your project vocabulary: coordinate system, units, naming conventions, what must never change. Loaded every session automatically.</div>
-      </div>
-      <div class="skill-card reveal">
-        <div class="sk-name">setup_spec.md</div>
-        <div class="sk-desc">Hardware layout, wiring, calibration values, known failure modes. The agent reads this before touching a single line of measurement code.</div>
-      </div>
-      <div class="skill-card reveal">
-        <div class="sk-name">domain.prompt.md</div>
-        <div class="sk-desc">Reusable patterns for your field: preferred libraries, plot styles, units, output formats. Write once, reuse across every task.</div>
-      </div>
-    </div>
+    <div class="col-head reveal">When it goes wrong, fix the box</div>
+    <table class="tier-table ext-table fix-table reveal">
+      <thead>
+        <tr><th>Symptom</th><th>Box</th><th>Fix</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ignores your units or conventions</td>
+          <td><span class="ext-tag">Context</span></td>
+          <td class="tier-tools">Add a line to copilot-instructions.md</td>
+        </tr>
+        <tr>
+          <td>Does not know your setup</td>
+          <td><span class="ext-tag">Store</span></td>
+          <td class="tier-tools">Write setup_spec.md and point to it</td>
+        </tr>
+        <tr>
+          <td>Loses the thread on long tasks</td>
+          <td><span class="ext-tag">Store</span></td>
+          <td class="tier-tools">Ask it to keep PLAN.md up to date</td>
+        </tr>
+        <tr>
+          <td>Cannot reach your data or instrument</td>
+          <td><span class="ext-tag">Tools</span></td>
+          <td class="tier-tools">Add a script or an MCP server</td>
+        </tr>
+        <tr>
+          <td>Runs something you did not want</td>
+          <td><span class="ext-tag">Gate</span></td>
+          <td class="tier-tools">Keep approvals on; commit first</td>
+        </tr>
+        <tr>
+          <td>Says “done” when it is not</td>
+          <td><span class="ext-tag">Evaluator</span></td>
+          <td class="tier-tools">Add a test with a known answer</td>
+        </tr>
+      </tbody>
+    </table>
     <div class="key-idea reveal">
-      <strong>The shift in skill</strong>
-      Clear technical writing in markdown is now a computational skill. The better your context, the better the agent performs.
+      <strong>The model is fixed. The files are yours.</strong>
+      Improve the agent by editing them, one box at a time.
+    </div>
+    <div class="ext-note reveal">Folder names follow VS Code Copilot conventions.</div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SLIDE 3c — ROADMAP: four workflows across a project
+     Media: Design = live 3D model; others are placeholders
+     ============================================================ -->
+<section class="slide roadmap-slide" aria-label="Four workflows">
+  <div class="rm-head">
+    <div class="eyebrow reveal">In practice</div>
+    <h2 class="reveal">Agents across a <em>research project</em></h2>
+  </div>
+  <div class="rm-grid stagger">
+    <div class="rm-card reveal">
+      <div class="rm-num">01</div>
+      <div class="rm-media rm-placeholder">
+          <!-- Replace this div's contents with:
+               <img src="path/to/learn.gif" alt="Learn">  and remove the rm-placeholder class -->
+          <div class="ph-label">Learn</div>
+          <div class="ph-hint">drop image or GIF here</div>
+        </div>
+      <div class="rm-name">Learn</div>
+      <div class="rm-desc">Turn a stack of papers and reports into a primer written for your project.</div>
+    </div>
+    <div class="rm-card reveal">
+      <div class="rm-num">02</div>
+      <div class="rm-media" id="tc3dContainer3">
+          <div class="tc3d-loading" id="tc3dLoading3">Loading 3D model…</div>
+        </div>
+      <div class="rm-name">Design</div>
+      <div class="rm-desc">Go from a figure in a paper to machinable CAD parts.</div>
+    </div>
+    <div class="rm-card reveal">
+      <div class="rm-num">03</div>
+      <div class="rm-media rm-placeholder">
+          <!-- Replace this div's contents with:
+               <img src="path/to/build.gif" alt="Build">  and remove the rm-placeholder class -->
+          <div class="ph-label">Build</div>
+          <div class="ph-hint">drop image or GIF here</div>
+        </div>
+      <div class="rm-name">Build</div>
+      <div class="rm-desc">Refactor, document and extend instrument-control code.</div>
+    </div>
+    <div class="rm-card reveal">
+      <div class="rm-num">04</div>
+      <div class="rm-media rm-placeholder">
+          <!-- Replace this div's contents with:
+               <img src="path/to/analyze.gif" alt="Analyze">  and remove the rm-placeholder class -->
+          <div class="ph-label">Analyze</div>
+          <div class="ph-hint">drop image or GIF here</div>
+        </div>
+      <div class="rm-name">Analyze</div>
+      <div class="rm-desc">Query, process and plot large datasets, SQL included.</div>
     </div>
   </div>
 </section>
@@ -2711,7 +3146,7 @@ class InlineEditor {
     const btn = document.getElementById('editToggle');
     document.body.classList.toggle('edit-mode', this.isActive);
     if (this.isActive) {
-      document.querySelectorAll('.slide h1, .slide h2, .slide p, .slide li, .slide .cc-head, .slide .cc-body, .slide .ct-head, .slide .ct-body, .slide .ct-num, .slide .p-text, .slide .ss-body, .slide .concept-def, .slide .tethers-def, .slide .docs-intro, .slide .docs-insight, .slide .db-body, .slide .db-title, .slide .sk-desc, .slide .sk-name, .slide .anatomy-desc, .slide .cc-label, .slide .cc-text, .slide .cd-callout .cc-label, .slide .cd-callout .cc-text, .slide .gap-note, .slide .abstr-code, .slide .eyebrow, .slide .sc-desc, .slide .sc-title, .slide .ti-head, .slide .ti-body').forEach(el => {
+      document.querySelectorAll('.slide h1, .slide h2, .slide p, .slide li, .slide .cc-head, .slide .cc-body, .slide .ct-head, .slide .ct-body, .slide .ct-num, .slide .p-text, .slide .ss-body, .slide .concept-def, .slide .tethers-def, .slide .docs-intro, .slide .docs-insight, .slide .db-body, .slide .db-title, .slide .sk-desc, .slide .sk-name, .slide .anatomy-desc, .slide .cc-label, .slide .cc-text, .slide .cd-callout .cc-label, .slide .cd-callout .cc-text, .slide .gap-note, .slide .abstr-code, .slide .eyebrow, .slide .sc-desc, .slide .sc-title, .slide .ti-head, .slide .ti-body, .slide .ing-name, .slide .ing-body, .slide .ing-eg, .slide .ext-intro, .slide .ext-note, .slide td, .slide .rm-name, .slide .rm-desc').forEach(el => {
         el.setAttribute('contenteditable', 'true');
         el.addEventListener('blur', () => this.save(), { once: false });
       });
@@ -3103,11 +3538,11 @@ function initViewer() {
   }).observe(container);
 }
 
-window.addEventListener('load', () => { initViewer(); initViewer2(); });
+window.addEventListener('load', () => { initViewer(); initViewer2(); initViewer2('tc3dContainer3', 'tc3dLoading3', 0.95); });
 
-function initViewer2() {
-  const container = document.getElementById('tc3dContainer2');
-  const loadingEl  = document.getElementById('tc3dLoading2');
+function initViewer2(cid = 'tc3dContainer2', lid = 'tc3dLoading2', dist = 1.4) {
+  const container = document.getElementById(cid);
+  const loadingEl  = document.getElementById(lid);
   if (!container) return;
   const W = container.clientWidth  || 500;
   const H = container.clientHeight || 400;
@@ -3162,7 +3597,7 @@ function initViewer2() {
 
     const r = Math.max(size.x, size.y, size.z) * scale;
     mesh.position.y += r * 0.12;
-    camera.position.set(0, 0, r * 1.4);
+    camera.position.set(0, 0, r * dist);
     camera.lookAt(0, 0, 0);
     controls.update();
     if (loadingEl) loadingEl.style.display = 'none';
